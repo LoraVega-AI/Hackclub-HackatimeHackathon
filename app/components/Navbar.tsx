@@ -4,7 +4,7 @@ import { Search, Heart, ShoppingBag, Bell } from 'lucide-react';
 
 export default function Navbar() {
   return (
-    <div className="w-full flex justify-center px-4 pt-4">
+    <div className="w-full flex justify-center px-4 pt-4 relative z-20">
       <nav className="w-full max-w-[95%] bg-gray-800/98 backdrop-blur-md border border-gray-700/60 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.3)] px-6 py-3">
         <div className="flex items-center justify-between gap-6">
           {/* Logo */}
