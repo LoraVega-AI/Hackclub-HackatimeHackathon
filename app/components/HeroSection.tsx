@@ -1,38 +1,31 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Twitter, Facebook, Instagram } from 'lucide-react';
+
+const GlobeCarousel = dynamic(() => import('./GlobeCarousel'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-[500px] h-[650px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/30 to-purple-500/30 shadow-2xl -mt-8 flex items-center justify-center">
+      <div className="text-gray-400">Loading...</div>
+    </div>
+  ),
+});
 
 export default function HeroSection() {
   return (
-    <div className="w-full bg-gray-800/98 backdrop-blur-md border-t border-gray-700/60 rounded-t-2xl shadow-[0_8px_30px_rgb(0,0,0,0.3)] h-screen flex items-center -mt-28 pt-36 relative z-10 overflow-hidden">
-      <div className="w-full flex items-center px-12 py-16">
-        <div className="flex gap-16 items-center w-full">
-          {/* Large Portrait Image - Main Focus */}
-          <div className="flex-shrink-0">
-            <div className="w-[500px] h-[650px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/30 to-purple-500/30 shadow-2xl -mt-8">
-              <div className="w-full h-full bg-gray-700 rounded-2xl flex items-center justify-center">
-                <svg
-                  width="400"
-                  height="400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-gray-500"
-                >
-                  <circle cx="12" cy="8" r="4" fill="currentColor" />
-                  <path
-                    d="M6 20C6 16 9 14 12 14C15 14 18 16 18 20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
+    <div className="w-full bg-gray-800/98 backdrop-blur-md border-t border-gray-700/60 shadow-[0_8px_30px_rgb(0,0,0,0.3)] h-screen flex items-center -mt-28 pt-36 relative z-10 overflow-visible">
+      {/* Full screen width background for globe images */}
+      <div className="absolute left-0 top-0 w-screen h-screen -z-10 pointer-events-none"></div>
+      <div className="w-full flex items-center px-12 py-16 relative z-0 overflow-visible">
+        <div className="flex gap-16 items-center w-full overflow-visible">
+          {/* 3D Globe Carousel - Main Focus */}
+          <div className="flex-shrink-0 overflow-visible">
+            <GlobeCarousel />
           </div>
 
           {/* Text Content */}
-          <div className="flex-1 flex flex-col gap-6">
+          <div className="flex-1 flex flex-col gap-6 relative z-20">
             {/* Underline */}
             <div className="w-16 h-0.5 bg-blue-400"></div>
 
